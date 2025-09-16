@@ -1,5 +1,6 @@
+"use client";
 import { useState } from "react";
-import { Cpu, Bot, Smartphone, Cloud, Brain, CircuitBoard, ChevronRight, CheckCircle2, Mail, Phone, Globe, Facebook, MessageSquare } from "lucide-react";
+import { Cpu, Bot, Smartphone, Cloud, Brain, CircuitBoard, ChevronRight, CheckCircle2, Mail, Phone, Globe, Facebook, MessageSquare, Boxes } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function MechCodeLanding() {
@@ -53,18 +54,18 @@ export default function MechCodeLanding() {
       },
     },
     {
-      icon: <Cloud className="w-6 h-6" />,
+  icon: <Boxes className="w-6 h-6" />, 
       title: {
-        th: "Cloud & DevOps",
-        en: "Cloud & DevOps",
+        th: "3D Printing & Fabrication",
+        en: "3D Printing & Fabrication",
       },
       desc: {
-        th: "เชื่อมอุปกรณ์ขึ้นคลาวด์ สตรีมมิ่งข้อมูล เซิร์ฟเวอร์ และสเกลง่าย",
-        en: "Connect devices to cloud, data streaming, servers, and easy scaling.",
+        th: "ออกแบบและผลิตชิ้นส่วน 3D, การพิมพ์ 3D, และการประกอบ",
+        en: "3D part design and manufacturing, 3D printing, and assembly.",
       },
       bullets: {
-        th: ["Docker / CI-CD", "AWS / GCP / Azure", "InfluxDB / Timescale / Grafana"],
-        en: ["Docker / CI-CD", "AWS / GCP / Azure", "InfluxDB / Timescale / Grafana"],
+        th: ["PLA / PETG / ABS", "Fixtures, Enclosures, Jigs", "Rapid Prototyping"],
+        en: ["PLA / PETG / ABS", "Fixtures, Enclosures, Jigs", "Rapid Prototyping"],
       },
     },
     {
@@ -143,9 +144,9 @@ export default function MechCodeLanding() {
   ];
 
   const stats = [
-    { label: { th: "โปรเจ็กต์", en: "Projects" }, value: "50+" },
-    { label: { th: "อุตสาหกรรมที่รองรับ", en: "Industries" }, value: "5+" },
-    { label: { th: "ความพึงพอใจ", en: "Satisfaction" }, value: "4.9/5" },
+    { label: { th: "โปรเจ็กต์", en: "Projects" }, value: lang === "th" ? "ผลงานจริงหลากหลาย" : "Diverse real projects" },
+    { label: { th: "อุตสาหกรรมที่รองรับ", en: "Industries" }, value: lang === "th" ? "ตอบโจทย์หลายอุตสาหกรรม" : "Multi-industry solutions" },
+    { label: { th: "คุณภาพ", en: "Quality" }, value: lang === "th" ? "เน้นคุณภาพทุกขั้นตอน" : "Quality at every step" },
   ];
 
   return (
@@ -154,7 +155,7 @@ export default function MechCodeLanding() {
       <header className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-slate-950/60 border-b border-white/10">
         <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-cyan-400 to-indigo-500 grid place-items-center font-bold">MC</div>
+            <img src="/image/logo1.jpg" alt="MechCode Robotech Logo" className="h-12 w-12 rounded-xl object-contain bg-white p-1 border border-white/20" />
             <div className="leading-tight">
               <div className="font-semibold text-lg">MechCode Robotech</div>
               <div className="text-xs text-slate-400">Hardware + Software Solutions</div>
@@ -228,16 +229,37 @@ export default function MechCodeLanding() {
               </h1>
               <p className="mt-4 text-slate-300 max-w-xl">
                 {lang === "th"
-                  ? "เราพัฒนาโซลูชันตั้งแต่ไมโครคอนโทรลเลอร์ เซนเซอร์ หุ่นยนต์ ไปจนถึงแอปและคลาวด์ เพื่อธุรกิจ SME, โรงงาน และสตาร์ทอัพ"
-                  : "We develop solutions from microcontrollers, sensors, robotics to apps and cloud for SMEs, factories, and startups."}
+                  ? "เราพัฒนาโซลูชันตั้งแต่ไมโครคอนโทรลเลอร์ เซนเซอร์ หุ่นยนต์ ไปจนถึงแอปและ IoT เพื่อธุรกิจ SME, โรงงาน และสตาร์ทอัพ"
+                  : "We develop solutions from microcontrollers, sensors, robotics to apps and IoT for SMEs, factories, and startups."}
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <a href="#contact" className="inline-flex items-center gap-2 rounded-2xl px-4 py-2 bg-white text-slate-900 font-semibold shadow">
-                  {lang === "th" ? "คุยโปรเจกต์กับเรา" : "Talk to us"} <ChevronRight className="w-4 h-4" />
-                </a>
-                <a href="#works" className="inline-flex items-center gap-2 rounded-2xl px-4 py-2 border border-white/15">
+                <button
+                  onClick={() =>
+                    window.open(
+                      "https://www.facebook.com/profile.php?id=61579303216095",
+                      "_blank",
+                      "noopener,noreferrer"
+                    )
+                  }
+                  className="relative z-20 inline-flex items-center gap-2 rounded-2xl px-4 py-2 bg-white text-slate-900 font-semibold shadow"
+                >
+                  {lang === "th" ? "คุยโปรเจกต์กับเรา" : "Talk to us"}
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    console.log("clicked");
+                    const works = document.getElementById("works");
+                    if (works) {
+                      works.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                  className="inline-flex items-center gap-2 rounded-2xl px-4 py-2 border border-white/15 z-10"
+                >
                   {lang === "th" ? "ดูผลงาน" : "See works"}
-                </a>
+                </button>
               </div>
               <div className="mt-8 flex gap-8">
                 {stats.map((s) => (
@@ -250,28 +272,13 @@ export default function MechCodeLanding() {
             </div>
             <div>
               <div className="rounded-3xl border border-white/10 p-2 bg-white/5 backdrop-blur">
-                <div className="aspect-[16/10] rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 grid place-items-center text-center p-6">
-                  <div>
-                    <div className="text-sm text-slate-300 mb-3">ตัวอย่างแดชบอร์ด IoT/Robotics</div>
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="rounded-xl bg-slate-800/80 p-3">
-                        <div className="text-xs text-slate-400">Machine Status</div>
-                        <div className="mt-1 font-semibold">Running</div>
-                      </div>
-                      <div className="rounded-xl bg-slate-800/80 p-3">
-                        <div className="text-xs text-slate-400">Units / hr</div>
-                        <div className="mt-1 font-semibold">128</div>
-                      </div>
-                      <div className="rounded-xl bg-slate-800/80 p-3">
-                        <div className="text-xs text-slate-400">Energy (kWh)</div>
-                        <div className="mt-1 font-semibold">42.5</div>
-                      </div>
-                      <div className="rounded-xl bg-slate-800/80 p-3">
-                        <div className="text-xs text-slate-400">Alerts</div>
-                        <div className="mt-1 font-semibold text-amber-300">1 minor</div>
-                      </div>
-                    </div>
-                  </div>
+                <div className="aspect-[16/10] rounded-2xl overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900 grid place-items-center text-center">
+                  <img 
+                    src="/image/Back.jpg" 
+                    alt="MechCode Robotech Team" 
+                    className="object-cover w-full h-full" 
+                    style={{ maxHeight: 320 }}
+                  />
                 </div>
               </div>
             </div>
@@ -280,6 +287,7 @@ export default function MechCodeLanding() {
       </section>
 
       {/* Logos / Trust */}
+      {/* <section className="border-t border-white/10">
       <section className="border-t border-white/10">
         <div className="mx-auto max-w-7xl px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-6 opacity-80">
           {[
@@ -294,7 +302,8 @@ export default function MechCodeLanding() {
           ))}
         </div>
       </section>
-
+      */}
+      
       {/* Services */}
       <section id="services" className="py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-6">
@@ -325,24 +334,42 @@ export default function MechCodeLanding() {
           <div className="flex items-end justify-between">
             <div>
               <h2 className="text-2xl md:text-3xl font-semibold">{lang === "th" ? "ตัวอย่างผลงาน" : "Sample Works"}</h2>
-              <p className="text-slate-300 mt-2">{lang === "th" ? "งานจริงที่ส่งมอบให้ลูกค้า (ตัวอย่าง/placeholder)" : "Delivered projects for clients (sample/placeholder)"}</p>
+              <p className="text-slate-300 mt-2">{lang === "th" ? "งานจริงที่ส่งมอบให้ลูกค้า" : "Delivered projects for clients (sample/placeholder)"}</p>
             </div>
             <a href="#contact" className="hidden md:inline-flex items-center gap-2 rounded-2xl px-4 py-2 border border-white/15">{lang === "th" ? "ขอรายละเอียดเพิ่มเติม" : "Request more info"}</a>
           </div>
           <div className="grid md:grid-cols-3 gap-6 mt-8">
-            {[1,2,3].map((i) => (
-              <div key={i} className="group">
-                <div className="aspect-[16/10] rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 border border-white/10 overflow-hidden grid place-items-center">
-                  <div className="text-center p-6 text-slate-300">
-                    {lang === "th" ? `ภาพผลงาน #${i}\nเพิ่มรูปจริงภายหลัง` : `Work image #${i}\n(Real photo coming soon)`}
-                  </div>
-                </div>
-                <div className="mt-3">
-                  <div className="font-semibold">{lang === "th" ? `โปรเจกต์ ${i}: ระบบ IoT/หุ่นยนต์` : `Project ${i}: IoT/Robotics System`}</div>
-                  <div className="text-sm text-slate-400">{lang === "th" ? "สรุปสั้น ๆ: เซนเซอร์ + แอป + คลาวด์" : "Summary: Sensors + App + Cloud"}</div>
-                </div>
+            {/* Work 1 */}
+            <div className="group">
+              <div className="aspect-[16/10] rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 border border-white/10 overflow-hidden grid place-items-center">
+                {/* เปลี่ยน src เป็นรูปจริงได้ */}
+                <img src="/image/pcb.png" alt="Project 1" className="object-cover w-full h-full" />
               </div>
-            ))}
+              <div className="mt-3">
+                <div className="font-semibold">{lang === "th" ? "ออกแบบและผลิต PCB" : "Design and Manufacture PCB"}</div>
+                <div className="text-sm text-slate-400">{lang === "th" ? "ออกแบบ PCB สำหรับอุปกรณ์ IoT" : "Design PCB for IoT devices"}</div>
+              </div>
+            </div>
+            {/* Work 2 */}
+            <div className="group">
+              <div className="aspect-[16/10] rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 border border-white/10 overflow-hidden grid place-items-center">
+                <img src="/image/2.png" alt="Project 2" className="object-cover w h" />
+              </div>
+              <div className="mt-3">
+                <div className="font-semibold">{lang === "th" ? "ออกแบบและพัฒนาแอปพลิเคชันเดสก์ท็อป" : "Design and Develop Desktop App"}</div>
+                <div className="text-sm text-slate-400">{lang === "th" ? "โปรแกรมต่ออายุใบรับรองในบริษัท" : "Program for renewing certification in the company"}</div>
+              </div>
+            </div>
+            {/* Work 3 */}
+            <div className="group">
+              <div className="aspect-[16/10] rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 border border-white/10 overflow-hidden grid place-items-center">
+                <img src="/image/3.png" alt="Project 3" className="object-cover w-full h" />
+              </div>
+              <div className="mt-3">
+                <div className="font-semibold">{lang === "th" ? "ระบบ SLAM บน Raspberry Pi (ORB-SLAM3)" : "SLAM System on Raspberry Pi (ORB-SLAM3)"}</div>
+                <div className="text-sm text-slate-400">{lang === "th" ? "ระบุตำแหน่งและสร้างแผนที่ 3D แบบเรียลไทม์จากภาพกล้อง" : "Real-time 3D mapping and localization from camera images"}</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -394,27 +421,61 @@ export default function MechCodeLanding() {
             <h2 className="text-2xl md:text-3xl font-semibold">{lang === "th" ? "ติดต่อทีม MechCode Robotech" : "Contact MechCode Robotech Team"}</h2>
             <p className="text-slate-300 mt-2">{lang === "th" ? "กรอกฟอร์ม หรือแชทมาหาเราได้เลย" : "Fill out the form or chat with us directly."}</p>
             <div className="mt-4 space-y-3 text-slate-300">
-              <div className="flex items-center gap-2"><Mail className="w-4 h-4" /> contact@mechcode-robotech.example</div>
-              <div className="flex items-center gap-2"><Phone className="w-4 h-4" /> 08x-xxx-xxxx</div>
-              <div className="flex items-center gap-2"><MessageSquare className="w-4 h-4" /> LINE: @mechcode</div>
+              <div className="flex items-center gap-2"><Mail className="w-4 h-4" /> mechcoderobotech@gmail.com</div>
+              <div className="flex items-center gap-2"><Phone className="w-4 h-4" /> 083-111-1666</div>
               <div className="flex items-center gap-2"><Facebook className="w-4 h-4" /> Facebook: MechCode Robotech</div>
               <div className="flex items-center gap-2"><Globe className="w-4 h-4" /> Chiang Mai, Thailand</div>
             </div>
           </div>
-          <form onSubmit={(e) => e.preventDefault()} className="rounded-2xl border border-white/10 p-5 bg-white/5">
+          <form
+            onSubmit={async (e) => {
+              e.preventDefault();
+              const form = e.target;
+              const name = form.elements['name']?.value || '';
+              const contact = form.elements['contact']?.value || '';
+              const projectType = form.elements['projectType']?.value || '';
+              const budget = form.elements['budget']?.value || '';
+              const details = form.elements['details']?.value || '';
+              const msg =
+                (lang === 'th'
+                  ? `\uD83D\uDCDD คำขอประเมินใหม่\n\n`
+                  : `\uD83D\uDCDD New Quote Request\n\n`) +
+                `${lang === 'th' ? 'ชื่อ' : 'Name'}: ${name}\n` +
+                `${lang === 'th' ? 'อีเมล/เบอร์' : 'Email/Phone'}: ${contact}\n` +
+                `${lang === 'th' ? 'ประเภทงาน' : 'Project Type'}: ${projectType}\n` +
+                `${lang === 'th' ? 'งบประมาณ' : 'Budget'}: ${budget}\n` +
+                `${lang === 'th' ? 'รายละเอียด' : 'Details'}: ${details}`;
+              try {
+                const res = await fetch('/api/line-broadcast', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' , 'Authorization': 'Bearer 9TpswRJCB/nX/rEnruU41Db/1IcwcL4miql/3sQ/PkZ+ivehD1GeZIHaSyzcAjkopGvmNHkmRbn7xdeJcWr39RikPS5Uoth7HFJjZ+K7IdvjgldxTG99y+xlsIPGB4ayM4oHjrnh5tts+vkDfbT99wdB04t89/1O/w1cDnyilFU='},
+                  body: JSON.stringify({ msg }),
+                });
+                if (res.ok) {
+                  alert(lang === 'th' ? 'ส่งคำขอสำเร็จ! ทีมงานจะติดต่อกลับโดยเร็ว' : 'Request sent! We will contact you soon.');
+                  form.reset();
+                } else {
+                  alert(lang === 'th' ? 'เกิดข้อผิดพลาดในการส่ง กรุณาลองใหม่' : 'Failed to send. Please try again.');
+                }
+              } catch (err) {
+                alert(lang === 'th' ? 'เกิดข้อผิดพลาดในการส่ง กรุณาลองใหม่' : 'Failed to send. Please try again.');
+              }
+            }}
+            className="rounded-2xl border border-white/10 p-5 bg-white/5"
+          >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <label className="text-sm">
                 {lang === "th" ? "ชื่อ-นามสกุล" : "Full Name"}
-                <input className="mt-1 w-full rounded-xl bg-slate-900 border border-white/10 px-3 py-2" placeholder={lang === "th" ? "สมชาย กล้าทดลอง" : "John Doe"}/>
+                <input name="name" className="mt-1 w-full rounded-xl bg-slate-900 border border-white/10 px-3 py-2" placeholder={lang === "th" ? "สมชาย กล้าทดลอง" : "John Doe"}/>
               </label>
               <label className="text-sm">
                 {lang === "th" ? "อีเมล / เบอร์โทร" : "Email / Phone"}
-                <input className="mt-1 w-full rounded-xl bg-slate-900 border border-white/10 px-3 py-2" placeholder={lang === "th" ? "me@company.com / 08x-xxx-xxxx" : "me@company.com / +66-xxx-xxx-xxx"}/>
+                <input name="contact" className="mt-1 w-full rounded-xl bg-slate-900 border border-white/10 px-3 py-2" placeholder={lang === "th" ? "me@company.com / 08x-xxx-xxxx" : "me@company.com / +66-xxx-xxx-xxx"}/>
               </label>
             </div>
             <label className="text-sm block mt-4">
               {lang === "th" ? "ประเภทงาน" : "Project Type"}
-              <select className="mt-1 w-full rounded-xl bg-slate-900 border border-white/10 px-3 py-2">
+              <select name="projectType" className="mt-1 w-full rounded-xl bg-slate-900 border border-white/10 px-3 py-2">
                 <option>{lang === "th" ? "Embedded / IoT" : "Embedded / IoT"}</option>
                 <option>{lang === "th" ? "Robotics & Automation" : "Robotics & Automation"}</option>
                 <option>{lang === "th" ? "Web / Mobile App" : "Web / Mobile App"}</option>
@@ -426,7 +487,7 @@ export default function MechCodeLanding() {
             </label>
             <label className="text-sm block mt-4">
               {lang === "th" ? "งบประมาณโดยประมาณ" : "Estimated Budget"}
-              <select className="mt-1 w-full rounded-xl bg-slate-900 border border-white/10 px-3 py-2">
+              <select name="budget" className="mt-1 w-full rounded-xl bg-slate-900 border border-white/10 px-3 py-2">
                 <option>{lang === "th" ? "ต่ำกว่า 30,000 บาท" : "Below 30,000 THB"}</option>
                 <option>{lang === "th" ? "30,000 – 80,000 บาท" : "30,000 – 80,000 THB"}</option>
                 <option>{lang === "th" ? "80,000 – 200,000 บาท" : "80,000 – 200,000 THB"}</option>
@@ -435,9 +496,9 @@ export default function MechCodeLanding() {
             </label>
             <label className="text-sm block mt-4">
               {lang === "th" ? "รายละเอียดโปรเจกต์" : "Project Details"}
-              <textarea rows={5} className="mt-1 w-full rounded-xl bg-slate-900 border border-white/10 px-3 py-2" placeholder={lang === "th" ? "เล่าปัญหา/เป้าหมาย, อุปกรณ์ที่มี, กำหนดเวลา, สิ่งที่ต้องการให้ทีมช่วย" : "Describe your problem/goals, available equipment, timeline, and what you need help with"}/>
+              <textarea name="details" rows={5} className="mt-1 w-full rounded-xl bg-slate-900 border border-white/10 px-3 py-2" placeholder={lang === "th" ? "เล่าปัญหา/เป้าหมาย, อุปกรณ์ที่มี, กำหนดเวลา, สิ่งที่ต้องการให้ทีมช่วย" : "Describe your problem/goals, available equipment, timeline, and what you need help with"}/>
             </label>
-            <button className="mt-5 inline-flex items-center gap-2 rounded-2xl px-4 py-2 bg-gradient-to-r from-cyan-400 to-indigo-500 text-slate-900 font-semibold shadow-lg">
+            <button type="submit" className="mt-5 inline-flex items-center gap-2 rounded-2xl px-4 py-2 bg-gradient-to-r from-cyan-400 to-indigo-500 text-slate-900 font-semibold shadow-lg">
               {lang === "th" ? "ส่งคำขอประเมิน" : "Submit Request"}
             </button>
             <div className="text-xs text-slate-400 mt-2">{lang === "th" ? "เราตอบกลับภายใน 24 ชม.ทำการ" : "We reply within 24 business hours."}</div>
@@ -468,9 +529,9 @@ export default function MechCodeLanding() {
           <div>
             <div className="font-semibold mb-2">{lang === "th" ? "ติดต่อเรา" : "Contact Us"}</div>
             <div className="text-sm flex flex-col gap-2">
-              <div className="flex items-center gap-2"><Mail className="w-4 h-4"/> contact@mechcode-robotech.example</div>
-              <div className="flex items-center gap-2"><Phone className="w-4 h-4"/> 08x-xxx-xxxx</div>
-              <div className="flex items-center gap-2"><Facebook className="w-4 h-4"/> Facebook Page</div>
+              <div className="flex items-center gap-2"><Mail className="w-4 h-4"/> mechcoderobotech@gmail.com</div>
+              <div className="flex items-center gap-2"><Phone className="w-4 h-4"/> 083-111-1666</div>
+              <a href="https://www.facebook.com/profile.php?id=61579303216095" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:underline"><Facebook className="w-4 h-4"/> Facebook Page</a>
             </div>
           </div>
         </div>
