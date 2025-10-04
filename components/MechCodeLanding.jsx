@@ -250,15 +250,12 @@ export default function MechCodeLanding() {
                 <button
                   type="button"
                   onClick={() => {
-                    console.log("clicked");
-                    const works = document.getElementById("works");
-                    if (works) {
-                      works.scrollIntoView({ behavior: "smooth" });
-                    }
+                    // เปิดไฟล์ PDF ในแท็บใหม่
+                    window.open('/image/Port_พิมพ์3.pdf', '_blank', 'noopener,noreferrer');
                   }}
-                  className="inline-flex items-center gap-2 rounded-2xl px-4 py-2 border border-white/15 z-10"
+                  className="inline-flex items-center gap-2 rounded-2xl px-4 py-2 border border-white/15 z-10 hover:border-cyan-400/30 hover:bg-white/5 transition-all"
                 >
-                  {lang === "th" ? "ดูผลงาน" : "See works"}
+                  {lang === "th" ? "ดูผลงาน" : "View Portfolio"}
                 </button>
               </div>
               <div className="mt-8 flex gap-8">
